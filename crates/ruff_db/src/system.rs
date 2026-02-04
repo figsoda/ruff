@@ -288,8 +288,11 @@ mod which_sys {
             &self,
             path: &Path,
         ) -> io::Result<Box<dyn Iterator<Item = io::Result<Self::ReadDirEntry>>>> {
-            // self.read_directory(system_path_from_std_path(path)?.clone())
-            todo!()
+            let iter = self
+                .read_directory(system_path_from_std_path(path)?)?
+                .collect::<Vec<_>>()
+                .into_iter();
+            Ok(Box::new(iter))
         }
 
         fn is_valid_executable(&self, path: &Path) -> io::Result<bool> {
