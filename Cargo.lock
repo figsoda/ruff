@@ -3085,6 +3085,7 @@ dependencies = [
  "tracing-subscriber",
  "ty_static",
  "web-time",
+ "which",
  "zip",
 ]
 
